@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>LAB 1 - Bootstrap</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons (thay Glyphicons) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<!-- ================= NAVBAR (BÀI 2 + BÀI 3) ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+
+        <!-- LOGO -->
+        <a class="navbar-brand" href="#">
+            <i class="bi bi-bootstrap-fill"></i> LAB BOOTSTRAP
+        </a>
+
+        <!-- TOGGLE -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- MENU -->
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="bi bi-house-fill"></i> Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-info-circle-fill"></i> About
+                    </a>
+                </li>
+
+                <!-- DROPDOWN -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                       data-bs-toggle="dropdown">
+                        <i class="bi bi-list"></i> Category
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Web</a></li>
+                        <li><a class="dropdown-item" href="#">Backend</a></li>
+                        <li><a class="dropdown-item" href="#">Mobile</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-envelope-fill"></i> Contact
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ================= LAYOUT (BÀI 1) ================= -->
+<div class="container mt-3">
+
+    <header class="row bg-warning p-3 text-center fw-bold">
+        HEADER
+    </header>
+
+    <nav class="row bg-primary p-2 text-white text-center">
+        NAV
+    </nav>
+
+    <div class="row mt-3">
+
+        <!-- ASIDE (BÀI 3) -->
+        <aside class="col-md-3">
+
+            <div class="card mb-3">
+                <div class="card-header bg-success text-white">
+                    DANH MỤC
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <i class="bi bi-caret-right-fill"></i> Menu 1
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-caret-right-fill"></i> Menu 2
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-caret-right-fill"></i> Menu 3
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-caret-right-fill"></i> Menu 4
+                    </li>
+                </ul>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <article class="col-md-9">
+
+            <!-- SECTION (BÀI 4) -->
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img src="https://picsum.photos/300/200" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Card 1</h5>
+                            <p class="card-text">Nội dung mô tả</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img src="https://picsum.photos/301/200" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Card 2</h5>
+                            <p class="card-text">Nội dung mô tả</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img src="https://picsum.photos/302/200" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Card 3</h5>
+                            <p class="card-text">Nội dung mô tả</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="row bg-danger text-white text-center p-3 mt-3">
+        FOOTER
+    </footer>
+
+</div>
+
+</body>
+</html>
