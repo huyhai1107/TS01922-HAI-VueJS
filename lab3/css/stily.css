@@ -1,0 +1,53 @@
+/* Reset nhẹ */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Carousel */
+.carousel img {
+    object-fit: cover;
+}
+
+/* Card */
+.card {
+    transition: 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Badge */
+.badge {
+    font-size: 0.8rem;
+}
+
+/* Pagination */
+.pagination .page-link {
+    color: #000;
+}
+.pagination .active .page-link {
+    background-color: #000;
+    border-color: #000;
+}
+
+/* Post detail */
+img {
+    border-radius: 8px;
+}
+
+/* Footer (nếu muốn thêm) */
+footer {
+    background: #212529;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 50px;
+}
