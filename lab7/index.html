@@ -1,0 +1,142 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 7 - Event Handling</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app" class="container mt-5">
+        <h2 class="text-center text-primary mb-4">LAB 7: EVENT & COMPONENTS</h2>
+        
+        <div class="d-flex justify-content-center gap-2 mb-4">
+            <button class="btn btn-outline-primary" @click="tab = 1">Bài 1</button>
+            <button class="btn btn-outline-primary" @click="tab = 2">Bài 2</button>
+            <button class="btn btn-outline-primary" @click="tab = 3">Bài 3</button>
+        </div>
+
+        <hr>
+
+        <div class="row mt-4">
+            <div v-if="tab === 1" class="col-md-12">
+                <h3>Bài 1: To-do List</h3>
+                <div class="input-group mb-3 w-50">
+                    <input v-model="newTask" @keyup.enter="addTask" class="form-control" placeholder="Tên công việc">
+                    <button @click="addTask" class="btn btn-primary">Thêm</button>
+                </div>
+                <ul class="list-group w-50">
+                    <li v-for="(t, i) in tasks" :key="i" class="list-group-item d-flex justify-content-between">
+                        {{ t }} <button @click="tasks.splice(i, 1)" class="btn btn-danger btn-sm">Xóa</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div v-if="tab === 2" class="col-md-12 p-3 border rounded bg-light">
+                <h3>Bài 2: Form Đăng ký</h3>
+                <form @submit.prevent="submitForm" class="w-50">
+                    <div class="mb-3">
+                        <label>Họ tên:</label>
+                        <input v-model="formData.fullName" type="text" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Email:</label>
+                        <input v-model="formData.email" type="email" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Mật khẩu:</label>
+                        <input v-model="formData.password" type="password" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Ngày sinh:</label>
+                        <input v-model="formData.dob" type="date" class="form-control" />
+                    </div>
+                    <button class="btn btn-primary">Đăng ký</button>
+                </form>
+            
+                <div class="mt-4 p-3 border bg-white w-50">
+                    <h4>Thông tin đã nhập:</h4>
+                    <p>Họ tên: {{ formData.fullName }}</p>
+                    <p>Email: {{ formData.email }}</p>
+                    <p>Ngày sinh: {{ formData.dob }}</p>
+                </div>
+            </div>
+
+            <div v-if="tab === 3" class="col-md-12">
+                <h3>Bài 3: Login & Comment</h3>
+                <div v-if="!isLoggedIn" class="card p-3 w-50">
+                    <input v-model="userIn" class="form-control mb-2" placeholder="Nhập tên">
+                    <button @click="login" class="btn btn-success">Đăng nhập</button>
+                </div>
+                <div v-else class="card p-3 w-50">
+                    <p>Chào, <b>{{ loggedInUser }}</b>! <button @click="isLoggedIn=false" class="btn btn-link btn-sm">Đăng xuất</button></p>
+                    <textarea v-model="comment" class="form-control" placeholder="Bình luận..."></textarea>
+                    <button @click="sendComment" class="btn btn-info mt-2 text-white">Gửi</button>
+                    <ul class="mt-2">
+                        <li v-for="c in comments"><b>{{ c.user }}:</b> {{ c.text }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+        createApp({
+            setup() {
+                const tab = ref(1);
+
+                // Logic Bài 1
+                const newTask = ref('');
+                const tasks = ref(['Học VueJS', 'Làm Lab 7']);
+                const addTask = () => { 
+                    if(newTask.value.trim()) { 
+                        tasks.value.push(newTask.value); 
+                        newTask.value = ''; 
+                    } 
+                };
+
+                // Logic Bài 2
+                const formData = ref({
+                    fullName: '',
+                    email: '',
+                    password: '',
+                    dob: ''
+                });
+                const submitForm = () => {
+                    alert('Đăng ký thành công cho: ' + formData.value.fullName);
+                };
+
+                // Logic Bài 3
+                const isLoggedIn = ref(false);
+                const userIn = ref('');
+                const loggedInUser = ref('');
+                const comment = ref('');
+                const comments = ref([]);
+
+                const login = () => { 
+                    if(userIn.value.trim()) { 
+                        loggedInUser.value = userIn.value; 
+                        isLoggedIn.value = true; 
+                    } 
+                };
+                const sendComment = () => { 
+                    if(comment.value.trim()) { 
+                        comments.value.push({user: loggedInUser.value, text: comment.value}); 
+                        comment.value = ''; 
+                    } 
+                };
+
+                // CHỈ CÓ 1 LỆNH RETURN DUY NHẤT Ở CUỐI
+                return { 
+                    tab, 
+                    newTask, tasks, addTask, 
+                    formData, submitForm,
+                    isLoggedIn, userIn, loggedInUser, comment, comments, login, sendComment 
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
